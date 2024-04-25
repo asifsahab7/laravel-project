@@ -20,28 +20,17 @@
                         <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="firstName" class="form-label">First Name</label>
-                                        <input type="text" id="firstName" name="firstName" class="form-control" value="{{ old('firstName') }}"
+                                        <label for="name" class="form-label">Your Name</label>
+                                        <input type="text" id="name" name="name" class="form-control" value="{{ old('firstName') }}"
                                            >
-                                        @error('firstName')
+                                        @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName" class="form-control" value="{{ old('lastName') }}"
-                                            >
-                                            @error('lastName')
-                                            <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                    </div>
-                                </div>
                             </div>
-
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
                                 <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}">
