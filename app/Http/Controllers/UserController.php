@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserRegister;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserRegisterRequest;
 
-class UserRegisterController extends Controller
+class UserController extends Controller
 {
     public function index(){
         return view('register');
     }
-    public function store(UserRegisterRequest $request){
-        $user = new UserRegister;
-        $user->firstName = $request->firstName;
-        $user->lastName = $request->lastName;
+    public function store(UserRequest $request){
+        $user = new User;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
@@ -28,5 +27,17 @@ class UserRegisterController extends Controller
         }        
         $user->save();
         return view('login');
+    }
+    public function userProfile($id){
+        $user = User::find($id);
+        if ($user) {
+            return view('userProfile', ['user' => $user]);
+        } else {
+            return back()->withErrors('User not found.');
+        }
+    }
+    public function edit($id){
+        $data = User::find($id);
+        return view('userEdit', ['data' => $data]);
     }
 }

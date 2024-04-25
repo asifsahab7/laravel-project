@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserRegisterTable extends Migration
+class CreateBuysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateUserRegisterTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_register', function (Blueprint $table) {
+        Schema::create('buys', function (Blueprint $table) {
             $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone');
-            $table->string('image')->nullable();
+            $table->integer('quantity');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('book_id')->constrained('books');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateUserRegisterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_register');
+        Schema::dropIfExists('buys');
     }
 }
