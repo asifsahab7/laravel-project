@@ -23,10 +23,13 @@ Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::post('/', [UserController::class, 'store'])->name('user.store');
 Route::get('/{user}/id', [UserController::class, 'userProfile'])->name('user.profile');
 Route::get('/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+
 
 // User Login
 Route::get('/login', [UserLoginController::class, 'index'])->name('user.login');
 Route::post('/login', [UserLoginController::class, 'store'])->name('store.login');
+Route::post('/logout', [UserLoginController::class, 'logout'])->name('logout');
 
 // Books Routes
 Route::get('/home', [BookController::class, 'index'])->name('books.index');

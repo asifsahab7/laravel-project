@@ -23,7 +23,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Your Name</label>
-                                        <input type="text" id="name" name="name" class="form-control" value="{{ old('firstName') }}"
+                                        <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}"
                                            >
                                         @error('name')
                                             <div class="text-danger">{{ $message }}</div>
