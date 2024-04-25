@@ -28,7 +28,7 @@
                     </li>
                     @auth
                         <li class="nav-item">
-                            <form id="logout-form" action="" method="POST">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="nav-link btn btn-link">Logout</button>
                             </form>
@@ -40,6 +40,9 @@
                             </a>
                         </li>
                     @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.index') }}">Register</a>
+                    </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('user.login') }}">Login</a>
                         </li>
@@ -53,7 +56,6 @@
 
     <!-- Main Content -->
 
-    <!-- In your Blade template -->
 @if(session('success'))
 <script>
     // Display a success alert using SweetAlert

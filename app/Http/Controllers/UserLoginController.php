@@ -24,4 +24,14 @@ class UserLoginController extends Controller
         }
         return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput($request->only('email'));
     }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        // Invalidate the session
+        $request->session()->invalidate();
+
+        // Redirect the user to the home page or any other desired page
+        return redirect('/');
+    }
 }
